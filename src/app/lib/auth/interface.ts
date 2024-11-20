@@ -24,3 +24,14 @@ export interface CustomUser {
     accessToken: string;
     refreshToken: string;
 }
+
+export interface User {
+    id: string;
+    email: string;
+    role: 'admin' | 'user' | 'guest';
+  }
+  
+  export interface AuthorizationResult {
+    authorized: boolean;
+    message?: string;
+  }

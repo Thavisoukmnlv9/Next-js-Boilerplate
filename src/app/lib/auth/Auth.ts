@@ -1,7 +1,7 @@
 import type { NextAuthConfig } from "next-auth";
 import NextAuth from "next-auth";
 import CredentialsProvider from "next-auth/providers/credentials";
-import $axios from "./Axios";
+import $axios from "../Axios";
 import { AuthResponse, CustomUser, UserCredentials } from "./interface";
 
 async function login(credentials: UserCredentials): Promise<CustomUser> {
