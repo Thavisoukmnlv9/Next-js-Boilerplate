@@ -1,6 +1,6 @@
 import React from "react";
-import AuthGuard from "@/app/lib/auth/AuthGuard";
-import { AbilityProvider } from "../lib/ability/AbilityProvider";
+import AuthGuard from "@/app/lib/auth/guard";
+import { AbilityProvider } from "../lib/ability/provider";
 import { Sidebar } from "../components/sidebar";
 
 export default function ProtectedLayout({

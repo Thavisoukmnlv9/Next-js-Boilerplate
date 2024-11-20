@@ -1,4 +1,4 @@
-import { auth } from "@/app/lib/auth/Auth";
+import { auth } from "@/app/lib/auth/auth";
 
 export const GET = auth((req) => {
     if (req.auth) {

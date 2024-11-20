@@ -1,10 +1,10 @@
 "use client"
 
 import { Users, Settings, Home, FileText, BarChart2, Building } from 'lucide-react';
-import { useAbility } from '@/app/lib/ability/AbilityContext';
-import { Actions, Subjects } from '../lib/ability/ability';
+import { useAbility } from '@/app/lib/ability/context';
 import { SidebarItem } from './SidebarItem';
 import LogoutButton from './logout';
+import { Actions, Subjects } from '../lib/ability/interface';
 
 export function Sidebar() {
   const ability = useAbility();
@@ -25,10 +25,10 @@ export function Sidebar() {
       action: 'read' as Actions
     },
     {
-      href: '/organization',
+      href: '/books',
       icon: <Building className="h-5 w-5" />,
-      label: 'Organization',
-      subject: 'Organization' as Subjects,
+      label: 'Books',
+      subject: 'books' as Subjects,
       action: 'read' as Actions
     },
     {

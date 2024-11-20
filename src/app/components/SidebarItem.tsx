@@ -1,9 +1,9 @@
 "use client";
 
-import { useAbility } from "@/app/lib/ability/AbilityContext";
+import { useAbility } from "@/app/lib/ability/context";
 import Link from "next/link";
 import { ReactNode } from "react";
-import { Actions, Subjects } from "../lib/ability/ability";
+import { Actions, Subjects } from "../lib/ability/interface";
 
 interface SidebarItemProps {
   href: string;

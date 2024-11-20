@@ -35,7 +35,6 @@ export default function AuthGuard({
       setLoading(false);
     }
   }, [pathname, status, requireAuth, isPublicRoute]);
-
   if (loading) {
     return (
       <div className="flex items-center justify-center min-h-screen">
@@ -43,6 +42,5 @@ export default function AuthGuard({
       </div>
     );
   }
-
   return <>{children}</>;
 }
