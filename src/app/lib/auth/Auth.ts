@@ -68,4 +68,16 @@ export const config: NextAuthConfig = {
     debug: process.env.NODE_ENV === "development",
 };
 
+export function getLogout() {
+    return async() => {
+      await signOut({
+        redirect: true,
+        redirectTo: "/login",
+      });
+      return {
+        success: true,
+      };
+    };
+  }
+  
 export const { handlers, auth, signIn, signOut } = NextAuth(config);

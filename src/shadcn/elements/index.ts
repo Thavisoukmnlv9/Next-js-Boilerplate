@@ -21,4 +21,6 @@ export * from "./scroll-area";
 export * from "./switch";
 export * from "./select";
 export * from "./tab";
+export * from "./toast";
+export * from "./progress";
 

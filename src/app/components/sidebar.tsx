@@ -5,6 +5,7 @@ import Link from "next/link";
 import { useSession } from "next-auth/react";
 import { signOut } from "next-auth/react";
 import { Package, User, Box, Gauge, Settings, LogOut } from "lucide-react";
+import LogoutButton from "./logout";
 
 const menuItems = [
   { name: "Dashboard", icon: Gauge, href: "/dashboard", resource: "dashboard", action: "read" },
@@ -85,6 +86,7 @@ export default function Sidebar() {
           </li>
         </ul>
       </nav>
+      <LogoutButton/>
     </div>
   );
 }

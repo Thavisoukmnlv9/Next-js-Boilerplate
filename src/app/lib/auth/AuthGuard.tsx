@@ -4,27 +4,45 @@ import React, { useEffect, useState } from "react";
 import { useSession } from "next-auth/react";
 import { usePathname, useRouter } from "next/navigation";
 
-export default function AuthGuard({ children }: { children: React.ReactNode }) {
+interface AuthGuardProps {
+  children: React.ReactNode;
+  requireAuth?: boolean;
+}
+
+export default function AuthGuard({ 
+  children, 
+  requireAuth = true 
+}: AuthGuardProps) {
   const { status } = useSession();
   const router = useRouter();
   const pathname = usePathname();
   const [loading, setLoading] = useState(true);
 
-  const guestRoutes = ["/login", "/register"];
+  const publicRoutes = ["/login", "/register"];
+  const isPublicRoute = publicRoutes.includes(pathname);
 
   useEffect(() => {
-    const isGuestRoute = guestRoutes.includes(pathname);
-    setLoading(true);
-
     if (status === "loading") return;
-    if (status === "authenticated" && isGuestRoute) {
-      router.push("/");
-    } else if (status === "unauthenticated" && !isGuestRoute) {
-      router.push("/login");
+    if (requireAuth) {
+      if (status === "unauthenticated" && !isPublicRoute) {
+        router.push(`/login?callbackUrl=${encodeURIComponent(pathname)}`);
+      } else if (status === "authenticated" && isPublicRoute) {
+        router.push("/user");
+      } else {
+        setLoading(false);
+      }
     } else {
       setLoading(false);
     }
-  }, [pathname, status]);
+  }, [pathname, status, requireAuth, isPublicRoute]);
 
-  return loading ? <div>Loading...</div> : <>{children}</>;
+  if (loading) {
+    return (
+      <div className="flex items-center justify-center min-h-screen">
+        <div className="text-lg">Loading...</div>
+      </div>
+    );
+  }
+
+  return <>{children}</>;
 }

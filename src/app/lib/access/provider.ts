@@ -15,7 +15,6 @@ export const accessControlProvider = (adapter: any) => {
         if (!role) {
           return { can: false };
         }
-
         if (["delete", "edit", "show"].includes(action)) {
           return {
             can: await enforcer.enforce(
