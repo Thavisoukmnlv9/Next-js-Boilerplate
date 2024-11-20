@@ -1,3 +1,5 @@
+export type Role = 'ADMIN' | 'MANAGER' | 'USER';
+
 export interface UserCredentials {
     tel: string;
     password: string;
@@ -6,7 +8,7 @@ export interface UserCredentials {
 export interface BackendUser {
     id: string;
     fullName: string;
-    role: string;
+    roles: Role[];
     tel: string;
 }
 
@@ -17,21 +19,25 @@ export interface AuthResponse {
 }
 
 export interface CustomUser {
-    fullName: string;
     tel: string;
+    fullName: string;
     id: string;
-    role: string;
+    roles: Role[];
     accessToken: string;
     refreshToken: string;
 }
 
+
+  
+
 export interface User {
     id: string;
     email: string;
-    role: 'admin' | 'user' | 'guest';
-  }
-  
-  export interface AuthorizationResult {
+    roles: Role[];
+}
+
+export interface AuthorizationResult {
     authorized: boolean;
     message?: string;
-  }
+}
+

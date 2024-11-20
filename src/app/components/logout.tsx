@@ -1,3 +1,5 @@
+"use client"
+
 import React from 'react';
 import { LogOut } from 'lucide-react';
 import { signOut } from 'next-auth/react';
@@ -7,7 +9,7 @@ const LogoutButton = () => {
   const handleLogout = async () => {
     await signOut({
       redirect: true,
-      callbackUrl: "http://127.0.0.1:3000/login",  // Explicit redirect URL
+      callbackUrl: "http://127.0.0.1:3000/login",
     });
   };
 
