@@ -20,6 +20,11 @@ export const resources: IResources[] = [
     icon: <IconLayoutDashboard size={18} />,
   },
   {
+    title: 'comingSoon',
+    href: '/comingSoon',
+    icon: <IconLayoutDashboard size={18} />,
+  },
+  {
     title: 'User Management',
     href: '/user',
     icon: <IconLayoutDashboard size={18} />,

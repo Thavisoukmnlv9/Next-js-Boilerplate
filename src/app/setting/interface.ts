@@ -11,5 +11,6 @@ export type Subjects =
   | 'View Users'
   | 'all'
   | 'manage'
+  | "comingSoon";
   
 export type AppAbility = MongoAbility<[Actions, Subjects]>;
