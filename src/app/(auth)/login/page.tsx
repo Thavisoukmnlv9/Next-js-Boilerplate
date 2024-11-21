@@ -32,8 +32,8 @@ function RightSection() {
     <div className='lg:p-8'>
       <div className='mx-auto flex w-full flex-col justify-center space-y-2 sm:w-[350px]'>
         <div className='flex flex-col space-y-2 text-left'>
-          <h1 className='text-2xl font-semibold tracking-tight'>ເຂົ້າລະບົບ</h1>
-          <p className='text-sm text-muted-foreground'>
+          <h1 className='text-2xl font-semibold tracking-tight font-noto-lao'>ເຂົ້າລະບົບ</h1>
+          <p className='text-sm text-muted-foreground font-noto-lao'>
             ປ້ອນອີເມວແລະລະຫັດຜ່ານຂອງທ່ານຂ້າງລຸ່ມນີ້ <br />
             ເພື່ອເຂົ້າສູ່ບັນຊີຂອງທ່ານ
           </p>

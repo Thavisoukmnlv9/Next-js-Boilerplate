@@ -28,8 +28,12 @@
       "@/*": [
         "./src/*"
       ],
-      "@/shadcn": ["./src/shadcn/elements/index.ts" ],
-      "@/shadcn/*": ["./src/shadcn/elements/index.ts" ],
+      "@/shadcn": [
+        "./src/shadcn/elements/index.ts"
+      ],
+      "@/shadcn/*": [
+        "./src/shadcn/elements/index.ts"
+      ],
       "@public/*": [
         "./public/*"
       ]
@@ -40,7 +44,8 @@
     "next-env.d.ts",
     "**/*.ts",
     "**/*.tsx",
-    ".next/types/**/*.ts"
+    ".next/types/**/*.ts",
+    "./dist/types/**/*.ts"
   ],
   "exclude": [
     "node_modules"
