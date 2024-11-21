@@ -1,7 +1,7 @@
 "use client";
 
 import { createContext, useContext } from 'react';
-import { AppAbility } from './interface';
+import { AppAbility } from '../../setting/interface';
 
 export const AbilityContext = createContext<AppAbility | undefined>(undefined);
 

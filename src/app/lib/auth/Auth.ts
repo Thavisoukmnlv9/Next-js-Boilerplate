@@ -12,6 +12,7 @@ interface SessionUser {
     id: string;
     roles: Role[];
     accessToken: string
+    email: string
 }
 
 declare module "next-auth" {
@@ -76,6 +77,7 @@ export const config: NextAuthConfig = {
                     tel: token.user.tel,
                     id: token.user.id,
                     roles: token.user.roles,
+                    email: token.user.email,
                     accessToken: token.user.accessToken
                 }
             }

@@ -4,7 +4,7 @@ import { Users, Settings, Home, FileText, BarChart2, Building } from 'lucide-rea
 import { useAbility } from '@/app/lib/ability/context';
 import { SidebarItem } from './SidebarItem';
 import LogoutButton from './logout';
-import { Actions, Subjects } from '../lib/ability/interface';
+import { Actions, Subjects } from '../setting/interface';
 
 export function Sidebar() {
   const ability = useAbility();

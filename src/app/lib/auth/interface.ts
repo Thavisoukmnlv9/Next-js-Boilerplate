@@ -27,9 +27,6 @@ export interface CustomUser {
     refreshToken: string;
 }
 
-
-  
-
 export interface User {
     id: string;
     email: string;

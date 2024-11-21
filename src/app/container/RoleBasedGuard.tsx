@@ -3,7 +3,7 @@
 import { useAbility } from "@/app/lib/ability/context";
 import { ReactNode } from "react";
 import { redirect } from "next/navigation";
-import { Actions, Subjects } from "../lib/ability/interface";
+import { Actions, Subjects } from "../setting/interface";
 
 interface RoleBasedGuardProps {
   children: ReactNode;

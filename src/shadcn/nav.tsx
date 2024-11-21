@@ -22,12 +22,12 @@ import {
 } from './elements'
 
 import useCheckActiveNav from './hooks/use-check-active-nav'
-import { SideLink } from '../app/setting/sidelinks'
+import { IResources } from '../app/setting/resources'
 import { cn } from './lib/utils'
 
 interface NavProps extends React.HTMLAttributes<HTMLDivElement> {
   isCollapsed: boolean
-  links: SideLink[]
+  links: IResources[]
   closeNav: () => void
 }
 
@@ -37,7 +37,7 @@ export default function Nav({
   className,
   closeNav,
 }: NavProps) {
-  const renderLink = ({ sub, ...rest }: SideLink) => {
+  const renderLink = ({ sub, ...rest }: IResources) => {
     const key = `${rest.title}-${rest.href}`
     if (isCollapsed && sub)
       return (
@@ -48,15 +48,12 @@ export default function Nav({
           closeNav={closeNav}
         />
       )
-
     if (isCollapsed)
       return <NavLinkIcon {...rest} key={key} closeNav={closeNav} />
-
     if (sub)
       return (
         <NavLinkDropdown {...rest} sub={sub} key={key} closeNav={closeNav} />
       )
-
     return <NavLink {...rest} key={key} closeNav={closeNav} />
   }
   return (
@@ -76,7 +73,7 @@ export default function Nav({
   )
 }
 
-interface NavLinkProps extends SideLink {
+interface NavLinkProps extends IResources {
   subLink?: boolean
   closeNav: () => void
 }
@@ -118,7 +115,6 @@ function NavLink({
 function NavLinkDropdown({ title, icon, label, sub, closeNav }: NavLinkProps) {
   const { checkActiveNav } = useCheckActiveNav()
   const isChildActive = !!sub?.find((s) => checkActiveNav(s.href))
-
   return (
     <Collapsible defaultOpen={isChildActive}>
       <CollapsibleTrigger

@@ -5,6 +5,7 @@ import React from "react";
 import { Layout } from "../../../shadcn/custom/layout";
 import { ThemeProvider } from "../../../shadcn/theme-provider";
 import ThemeSwitch from "../../../shadcn/theme-switch";
+import { UserNav } from "../../../shadcn/user-nav";
 
 export default function UserPage() {
   return (
@@ -17,6 +18,7 @@ export default function UserPage() {
         <Layout.Header sticky>
           <div className="ml-auto flex items-center space-x-4">
             <ThemeSwitch />
+            <UserNav />
           </div>
         </Layout.Header>
         <Layout.Body>

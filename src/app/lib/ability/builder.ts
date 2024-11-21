@@ -1,6 +1,6 @@
 import { AbilityBuilder, createMongoAbility } from '@casl/ability';
-import { rolePermissions } from './permissions';
-import { AppAbility, Actions, Subjects } from './interface';
+import { rolePermissions } from '../../setting/permissions';
+import { AppAbility, Actions, Subjects } from '../../setting/interface';
 import { Role } from '../auth/interface';
 
 function parseConditions(conditions: Record<string, unknown>, userId: string): Record<string, unknown> {

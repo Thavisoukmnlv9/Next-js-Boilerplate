@@ -3,7 +3,7 @@
 import { useAbility } from "@/app/lib/ability/context";
 import Link from "next/link";
 import { ReactNode } from "react";
-import { Actions, Subjects } from "../lib/ability/interface";
+import { Actions, Subjects } from "../setting/interface";
 
 interface SidebarItemProps {
   href: string;
