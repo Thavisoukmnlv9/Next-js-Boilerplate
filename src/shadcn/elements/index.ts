@@ -23,4 +23,7 @@ export * from "./select";
 export * from "./tab";
 export * from "./toast";
 export * from "./progress";
-
+export * from "./collapsible";
+export * from "./badge";
+export * from "./use-toast";
+export * from "./tooltip";
