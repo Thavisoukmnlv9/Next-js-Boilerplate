@@ -1,4 +1,4 @@
-export type Role = 'ADMIN' | 'MANAGER'
+export type Role = 'admin' | 'staff'
 
 export interface UserCredentials {
     tel: string;

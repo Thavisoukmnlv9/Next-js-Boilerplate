@@ -73,7 +73,7 @@ export default function Sidebar({
                 isCollapsed ? "invisible w-0" : "visible w-auto"
               }`}
             >
-              <span className="font-medium">Admin Boilerplate</span>
+              <span className="font-medium">admin Boilerplate</span>
               <span className="text-xs">ShadcnUI</span>
             </div>
           </div>

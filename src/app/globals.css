@@ -2,21 +2,19 @@
 @tailwind components;
 @tailwind utilities;
 
-
 @layer base {
-
   @font-face {
-    font-family: 'Noto Sans Lao';
-    src: url('/fonts/NotoSansLao.ttf') format('truetype');
+    font-family: "Noto Sans Lao";
+    src: url("/fonts/NotoSansLao.ttf") format("truetype");
     font-weight: 400;
     font-style: normal;
     font-display: swap;
   }
   html {
-    font-family: 'Noto Sans Lao', system-ui, sans-serif;
+    font-family: "Noto Sans Lao", system-ui, sans-serif;
   }
   .font-lao {
-    font-family: 'Noto Sans Lao', system-ui, sans-serif;
+    font-family: "Noto Sans Lao", system-ui, sans-serif;
   }
   * {
     @apply border-border;
@@ -53,5 +51,50 @@
   }
   ol {
     @apply list-decimal;
+  }
+
+  :root {
+    --background: 105 100% 95%;
+    --foreground: 105 5% 0%;
+    --card: 105 50% 90%;
+    --card-foreground: 105 5% 10%;
+    --popover: 105 100% 95%;
+    --popover-foreground: 105 100% 0%;
+    --primary: 105 87% 47%;
+    --primary-foreground: 0 0% 100%;
+    --secondary: 105 30% 70%;
+    --secondary-foreground: 0 0% 0%;
+    --muted: 67 30% 85%;
+    --muted-foreground: 105 5% 35%;
+    --accent: 67 30% 80%;
+    --accent-foreground: 105 5% 10%;
+    --destructive: 0 100% 30%;
+    --destructive-foreground: 105 5% 90%;
+    --border: 105 30% 50%;
+    --input: 105 30% 18%;
+    --ring: 105 87% 47%;
+    --radius: 0.5rem;
+  }
+  .dark {
+    --background: 105 50% 5%;
+    --foreground: 105 5% 90%;
+    --card: 105 50% 0%;
+    --card-foreground: 105 5% 90%;
+    --popover: 105 50% 5%;
+    --popover-foreground: 105 5% 90%;
+    --primary: 105 87% 47%;
+    --primary-foreground: 0 0% 100%;
+    --secondary: 105 30% 10%;
+    --secondary-foreground: 0 0% 100%;
+    --muted: 67 30% 15%;
+    --muted-foreground: 105 5% 60%;
+    --accent: 67 30% 15%;
+    --accent-foreground: 105 5% 90%;
+    --destructive: 0 100% 30%;
+    --destructive-foreground: 105 5% 90%;
+    --border: 105 30% 18%;
+    --input: 105 30% 18%;
+    --ring: 105 87% 47%;
+    --radius: 0.5rem;
   }
 }

@@ -28,3 +28,6 @@ export * from "./badge";
 export * from "./use-toast";
 export * from "./tooltip";
 export * from "./form";
+export * from "./checkbox";
+export * from "./input";
+export * from "./toaster";

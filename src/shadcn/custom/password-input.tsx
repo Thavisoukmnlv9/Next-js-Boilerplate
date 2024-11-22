@@ -99,7 +99,7 @@ const PasswordInput = forwardRef<HTMLInputElement, PasswordInputProps>(
             </div>
 
             <p id="password-strength" className="mb-2 text-sm font-medium text-foreground">
-              {getStrengthText(strengthScore)}. Must contain:
+              {getStrengthText(strengthScore)}.  ຕ້ອງມີ:
             </p>
 
             <ul className="space-y-1.5" aria-label="Password requirements">

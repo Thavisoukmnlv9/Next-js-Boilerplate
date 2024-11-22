@@ -1,7 +1,7 @@
 // import { UserAuthForm } from './components/user-auth-form'
 "use client";
 import { BadgeCheck } from "lucide-react";
-import { UserAuthForm } from "./user-auth-form";
+import { UserAuthForm } from "./constainer/form";
 import { Card } from "@/shadcn/elements";
 import Image from "next/image";
 
@@ -19,7 +19,7 @@ function LeftSection() {
       <div className='absolute inset-0 bg-zinc-900' />
       <div className='relative z-20 flex items-center text-lg font-medium'>
         <BadgeCheck className='mr-2 h-6 w-6' />
-        Boilerplate Shadcn Admin
+        Boilerplate Shadcn admin
       </div>
       <Image src={'/pern.webp'} className='relative z-20 m-auto rounded-full' width={400} height={400} alt='logo' />
       <div className='relative z-20 mt-auto'>
