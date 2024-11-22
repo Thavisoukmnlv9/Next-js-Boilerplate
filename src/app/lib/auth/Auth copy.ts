@@ -1,7 +1,6 @@
 import type { NextAuthConfig } from "next-auth";
 import NextAuth from "next-auth";
 import CredentialsProvider from "next-auth/providers/credentials";
-import $fetchClient from "./fetchClient";
 import { AuthResponse, CustomUser, Role, UserCredentials } from "./interface";
 import type { Session } from "next-auth";
 
@@ -21,12 +20,28 @@ declare module "next-auth" {
 }
 
 async function login(credentials: UserCredentials): Promise<CustomUser> {
+    const loginUrl = `${process.env.API_BASE_URL}/boilerplate/v1/login`;
+    console.log("🚀 ~ login ~ loginUrl:", loginUrl)
+
     try {
-        const response = await $fetchClient.post<AuthResponse>("/boilerplate/v1/login", {
-            tel: credentials.tel,
-            password: credentials.password
+        const response = await fetch("/boilerplate/v1/login", {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+                tel: credentials.tel,
+                password: credentials.password
+            })
         });
-        const { user, accessToken, refreshToken } = response.data;
+
+        if (!response.ok) {
+            throw new Error(`HTTP error! status: ${response.status}`);
+        }
+
+        const data: AuthResponse = await response.json();
+        const { user, accessToken, refreshToken } = data;
+        
         return {
             tel: user.tel,
             fullName: user.fullName,

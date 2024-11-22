@@ -3,7 +3,7 @@ import { useForm } from "react-hook-form";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { signIn } from "next-auth/react";
-import { useToast } from "@/shadcn";
+import { useToast, ToastProps } from "@/shadcn";
 import { cn } from "../../../../shadcn/lib/utils";
 import { formSchema } from "./schema";
 

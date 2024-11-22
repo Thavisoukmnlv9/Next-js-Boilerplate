@@ -51,7 +51,7 @@ function RightSection() {
               ເພື່ອເຂົ້າສູ່ບັນຊີຂອງທ່ານ
             </p>
           </div>
-          <LoginFormContainer />
+          {/* <LoginFormContainer /> */}
           <UserAuthForm />
         </Card>
       </div>
