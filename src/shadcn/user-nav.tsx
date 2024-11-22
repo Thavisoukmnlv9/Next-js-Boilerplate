@@ -52,7 +52,7 @@ function UserInfoLabel() {
 
 export default function LogoutContainer() {
   const baseURL = `${baseUrl}/login`;
-  console.log("baseURL", baseURL);
+
   const handleLogout = async () => {
     try {
       await signOut({

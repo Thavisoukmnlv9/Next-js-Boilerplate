@@ -1,18 +1,16 @@
 import type { NextAuthConfig } from "next-auth";
 import NextAuth from "next-auth";
 import CredentialsProvider from "next-auth/providers/credentials";
-import $axios from "../Axios";
 import { AuthResponse, CustomUser, Role, UserCredentials } from "./interface";
 import type { Session } from "next-auth";
-
 
 interface SessionUser {
     fullName: string;
     tel: string;
     id: string;
     roles: Role[];
-    accessToken: string
-    email: string
+    accessToken: string;
+    email: string;
 }
 
 declare module "next-auth" {
@@ -21,14 +19,26 @@ declare module "next-auth" {
     }
 }
 
-
 async function login(credentials: UserCredentials): Promise<CustomUser> {
     try {
-        const response = await $axios.post<AuthResponse>("/boilerplate/v1/login", {
-            tel: credentials.tel,
-            password: credentials.password
+        const response = await fetch("/boilerplate/v1/login", {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+                tel: credentials.tel,
+                password: credentials.password
+            })
         });
-        const { user, accessToken, refreshToken } = response.data;
+
+        if (!response.ok) {
+            throw new Error(`HTTP error! status: ${response.status}`);
+        }
+
+        const data: AuthResponse = await response.json();
+        const { user, accessToken, refreshToken } = data;
+        
         return {
             tel: user.tel,
             fullName: user.fullName,
@@ -86,4 +96,5 @@ export const config: NextAuthConfig = {
     },
     debug: process.env.NODE_ENV === "development",
 };
+
 export const { handlers, auth, signIn, signOut } = NextAuth(config);

@@ -19,9 +19,6 @@ export default function ThemeSwitch() {
     const metaThemeColor = document.querySelector("meta[name='theme-color']");
     metaThemeColor && metaThemeColor.setAttribute("content", themeColor);
   }, [theme]);
-
-  console.log(theme);
-
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
