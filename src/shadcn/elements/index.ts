@@ -27,3 +27,4 @@ export * from "./collapsible";
 export * from "./badge";
 export * from "./use-toast";
 export * from "./tooltip";
+export * from "./form";

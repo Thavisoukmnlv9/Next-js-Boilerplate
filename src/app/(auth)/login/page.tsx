@@ -1,6 +1,9 @@
 // import { UserAuthForm } from './components/user-auth-form'
-
+"use client";
 import { BadgeCheck } from "lucide-react";
+import { UserAuthForm } from "./user-auth-form";
+import { Card } from "@/shadcn/elements";
+import Image from "next/image";
 
 export default function SignIn() {
   return (
@@ -18,7 +21,7 @@ function LeftSection() {
         <BadgeCheck className='mr-2 h-6 w-6' />
         Boilerplate Shadcn Admin
       </div>
-      <img src={'/pern.webp'} className='relative m-auto' width={301} height={60} alt='logo' />
+      <Image src={'/pern.webp'} className='relative z-20 m-auto rounded-full' width={400} height={400} alt='logo' />
       <div className='relative z-20 mt-auto'>
         <blockquote className='space-y-2'>
           <footer className='text-sm'>Thavisouk Minalavong</footer>
@@ -31,15 +34,16 @@ function RightSection() {
   return (
     <div className='lg:p-8'>
       <div className='mx-auto flex w-full flex-col justify-center space-y-2 sm:w-[350px]'>
-        <div className='flex flex-col space-y-2 text-left'>
-          <h1 className='text-2xl font-semibold tracking-tight font-noto-lao'>ເຂົ້າລະບົບ</h1>
-          <p className='text-sm text-muted-foreground font-noto-lao'>
-            ປ້ອນອີເມວແລະລະຫັດຜ່ານຂອງທ່ານຂ້າງລຸ່ມນີ້ <br />
-            ເພື່ອເຂົ້າສູ່ບັນຊີຂອງທ່ານ
-          </p>
-        </div>
-        {/* You can uncomment and integrate UserAuthForm here */}
-        {/* <UserAuthForm /> */}
+        <Card className='p-6'>
+          <div className='flex flex-col space-y-2 text-left'>
+            <h1 className='text-2xl font-semibold tracking-tight font-noto-lao'>ເຂົ້າລະບົບ</h1>
+            <p className='text-sm text-muted-foreground font-noto-lao'>
+              ປ້ອນອີເມວແລະລະຫັດຜ່ານຂອງທ່ານຂ້າງລຸ່ມນີ້ <br />
+              ເພື່ອເຂົ້າສູ່ບັນຊີຂອງທ່ານ
+            </p>
+          </div>
+          <UserAuthForm />
+        </Card >
       </div>
     </div>
   );

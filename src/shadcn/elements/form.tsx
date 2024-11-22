@@ -157,7 +157,7 @@ const FormMessage = React.forwardRef<
             ref={ref}
             id={formMessageId}
             className={cn(
-                "text-[0.8rem] font-medium text-destructive",
+                "text-[0.8rem] font-medium text-destructive text-red-500",
                 className,
             )}
             {...props}
@@ -170,7 +170,7 @@ FormMessage.displayName = "FormMessage";
 
 export {
     useFormField,
-    Form as FormUI,
+    Form,
     FormItem,
     FormLabel,
     FormControl,
