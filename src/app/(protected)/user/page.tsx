@@ -1,48 +1,38 @@
 "use client";
 
-import { RoleBasedGuard } from "@/app/container/RoleBasedGuard";
 import React from "react";
-import { Layout } from "../../../shadcn/custom/layout";
-import { ThemeProvider } from "../../../shadcn/theme-provider";
-import ThemeSwitch from "../../../shadcn/theme-switch";
-import { UserNav } from "../../../shadcn/user-nav";
 import useUsers from "./hook";
 import { DataTable } from "./components/data-table";
 import { columns } from "./components/columns";
+import ThemeSwitch from "../../../shadcn/theme-switch";
+import { useState } from "react";
 
 export default function UserPage() {
-  const { users, loading, error } = useUsers();
-  const userDataList = users?.books?.results ?? []
-  console.log("userDataList", userDataList);
+  const { users, loading, error, pagination, setPagination, meta, search, setSearch } = useUsers();
   return (
-    <RoleBasedGuard
-      subject="User"
-      action="read"
-      fallback={<div>You don't have permission to view this page</div>}
-    >
-      <Layout>
-        <Layout.Header sticky>
-          <div className="ml-auto flex items-center space-x-4">
-            <ThemeSwitch />
-            <UserNav />
-          </div>
-        </Layout.Header>
-        <Layout.Body>
-          <div className="mb-2 flex items-center justify-between space-y-2">
-            <div>
-              <h2 className="text-2xl font-bold tracking-tight">
-                Welcome back!
-              </h2>
-              <p className="text-muted-foreground">
-                Here&apos;s a list of your tasks for this month!
-              </p>
-            </div>
-          </div>
-          <div className="-mx-4 flex-1 overflow-auto px-4 py-1 lg:flex-row lg:space-x-12 lg:space-y-0">
-          <DataTable data={userDataList} columns={columns} />
-          </div>
-        </Layout.Body>
-      </Layout>
-    </RoleBasedGuard>
+    <div className="p-4 space-y-4">
+       <input
+        type="text"
+        value={search}
+        onChange={(e) => setSearch(e.target.value)}
+        placeholder="Search..."
+        className="px-4 py-2 border rounded text-black"
+      />
+      <DataTable
+          columns={columns}
+          data={users}
+          pagination={{
+            pageIndex: pagination.page - 1,
+            pageSize: pagination.limit,
+            totalItems: meta.totalCount,
+          }}
+          onPaginationChange={(newPagination) => {
+            setPagination({
+              page: newPagination.pageIndex + 1,
+              limit: newPagination.pageSize,
+            });
+          }}
+        />
+    </div>
   );
 }
