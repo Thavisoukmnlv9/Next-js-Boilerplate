@@ -1,54 +1,55 @@
-"use client";
-import * as React from "react";
-import { Check, Eye, EyeOff, X } from "lucide-react";
-import { useMemo, useState, forwardRef } from "react";
-import { Input, Label } from "../elements";
-import { cn } from "../lib/utils";
+"use client"
+import { Check, Eye, EyeOff, X } from "lucide-react"
+import * as React from "react"
+import { forwardRef, useMemo, useState } from "react"
+import { Input } from "../elements"
+import { cn } from "../lib/utils"
 
-export interface PasswordInputProps extends React.InputHTMLAttributes<HTMLInputElement> {
-  strengthIndicator?: boolean;
+export interface PasswordInputProps
+  extends React.InputHTMLAttributes<HTMLInputElement> {
+  strengthIndicator?: boolean
 }
 
 const PasswordInput = forwardRef<HTMLInputElement, PasswordInputProps>(
   ({ className, strengthIndicator = true, ...props }, ref) => {
-    const [password, setPassword] = useState("");
-    const [isVisible, setIsVisible] = useState<boolean>(false);
+    const [password, setPassword] = useState("")
+    const [isVisible, setIsVisible] = useState<boolean>(false)
 
-    const toggleVisibility = () => setIsVisible((prevState) => !prevState);
+    const toggleVisibility = () => setIsVisible((prevState) => !prevState)
 
     const checkStrength = (pass: string) => {
-        const requirements = [
-            { regex: /.{8,}/, text: "ຢ່າງນ້ອຍ 8 ຕົວອັກສອນ" },
-            { regex: /[0-9]/, text: "ຢ່າງນ້ອຍ 1 ຕົວເລກ" },
-            { regex: /[a-z]/, text: "ຢ່າງນ້ອຍ 1 ຕົວອັກສອນຂຽນນ້ອຍ" },
-            { regex: /[A-Z]/, text: "ຢ່າງນ້ອຍ 1 ຕົວອັກສອນຂຽນໃຫຍ່" },
-          ];
-          
+      const requirements = [
+        { regex: /.{8,}/, text: "ຢ່າງນ້ອຍ 8 ຕົວອັກສອນ" },
+        { regex: /[0-9]/, text: "ຢ່າງນ້ອຍ 1 ຕົວເລກ" },
+        { regex: /[a-z]/, text: "ຢ່າງນ້ອຍ 1 ຕົວອັກສອນຂຽນນ້ອຍ" },
+        { regex: /[A-Z]/, text: "ຢ່າງນ້ອຍ 1 ຕົວອັກສອນຂຽນໃຫຍ່" },
+      ]
+
       return requirements.map((req) => ({
         met: req.regex.test(pass),
         text: req.text,
-      }));
-    };
+      }))
+    }
 
-    const strength = checkStrength(password);
+    const strength = checkStrength(password)
     const strengthScore = useMemo(() => {
-      return strength.filter((req) => req.met).length;
-    }, [strength]);
+      return strength.filter((req) => req.met).length
+    }, [strength])
 
     const getStrengthColor = (score: number) => {
-      if (score === 0) return "bg-border";
-      if (score <= 1) return "bg-red-500";
-      if (score <= 2) return "bg-orange-500";
-      if (score === 3) return "bg-amber-500";
-      return "bg-emerald-500";
-    };
+      if (score === 0) return "bg-border"
+      if (score <= 1) return "bg-red-500"
+      if (score <= 2) return "bg-orange-500"
+      if (score === 3) return "bg-amber-500"
+      return "bg-emerald-500"
+    }
 
     const getStrengthText = (score: number) => {
-        if (score === 0) return "ກະລຸນາໃສ່ລະຫັດຜ່ານ";
-        if (score <= 2) return "ລະຫັດຜ່ານອ່ອນແອ";
-        if (score === 3) return "ລະຫັດຜ່ານລະດັບກາງ";
-        return "ລະຫັດຜ່ານປອດໄພ";
-      };
+      if (score === 0) return "ກະລຸນາໃສ່ລະຫັດຜ່ານ"
+      if (score <= 2) return "ລະຫັດຜ່ານອ່ອນແອ"
+      if (score === 3) return "ລະຫັດຜ່ານລະດັບກາງ"
+      return "ລະຫັດຜ່ານປອດໄພ"
+    }
 
     return (
       <div className={cn("space-y-2", className)}>
@@ -58,13 +59,15 @@ const PasswordInput = forwardRef<HTMLInputElement, PasswordInputProps>(
             type={isVisible ? "text" : "password"}
             value={password}
             onChange={(e) => {
-              setPassword(e.target.value);
-              props.onChange?.(e);
+              setPassword(e.target.value)
+              props.onChange?.(e)
             }}
             ref={ref}
             className={cn("pe-9")}
             aria-invalid={strengthScore < 4}
-            aria-describedby={strengthIndicator ? "password-strength" : undefined}
+            aria-describedby={
+              strengthIndicator ? "password-strength" : undefined
+            }
           />
           <button
             className="absolute inset-y-0 end-0 flex h-full w-9 items-center justify-center rounded-e-lg text-muted-foreground/80 outline-offset-2 transition-colors hover:text-foreground focus:z-10 focus-visible:outline focus-visible:outline-2 focus-visible:outline-ring/70 disabled:pointer-events-none disabled:cursor-not-allowed disabled:opacity-50"
@@ -98,24 +101,37 @@ const PasswordInput = forwardRef<HTMLInputElement, PasswordInputProps>(
               ></div>
             </div>
 
-            <p id="password-strength" className="mb-2 text-sm font-medium text-foreground">
-              {getStrengthText(strengthScore)}.  ຕ້ອງມີ:
+            <p
+              id="password-strength"
+              className="mb-2 text-sm font-medium text-foreground"
+            >
+              {getStrengthText(strengthScore)}. ຕ້ອງມີ:
             </p>
 
             <ul className="space-y-1.5" aria-label="Password requirements">
               {strength.map((req, index) => (
                 <li key={index} className="flex items-center gap-2">
                   {req.met ? (
-                    <Check size={16} className="text-emerald-500" aria-hidden="true" />
+                    <Check
+                      size={16}
+                      className="text-emerald-500"
+                      aria-hidden="true"
+                    />
                   ) : (
-                    <X size={16} className="text-muted-foreground/80" aria-hidden="true" />
+                    <X
+                      size={16}
+                      className="text-muted-foreground/80"
+                      aria-hidden="true"
+                    />
                   )}
                   <span
                     className={`text-xs ${req.met ? "text-emerald-600" : "text-muted-foreground"}`}
                   >
                     {req.text}
                     <span className="sr-only">
-                      {req.met ? " - Requirement met" : " - Requirement not met"}
+                      {req.met
+                        ? " - Requirement met"
+                        : " - Requirement not met"}
                     </span>
                   </span>
                 </li>
@@ -124,10 +140,10 @@ const PasswordInput = forwardRef<HTMLInputElement, PasswordInputProps>(
           </>
         )}
       </div>
-    );
+    )
   }
-);
+)
 
-PasswordInput.displayName = "PasswordInput";
+PasswordInput.displayName = "PasswordInput"
 
-export { PasswordInput };
+export { PasswordInput }

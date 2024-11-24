@@ -1,29 +1,25 @@
-import Link from 'next/link'
-import { IconChevronDown } from '@tabler/icons-react'
-import { Button, buttonVariants } from './custom/button'
+import { IconChevronDown } from "@tabler/icons-react"
+import Link from "next/link"
+import { Button, buttonVariants } from "../custom/button"
 import {
   Collapsible,
   CollapsibleContent,
   CollapsibleTrigger,
-} from './elements'
-import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
   DropdownMenuLabel,
   DropdownMenuSeparator,
   DropdownMenuTrigger,
-} from './elements'
-import {
   Tooltip,
   TooltipContent,
   TooltipProvider,
   TooltipTrigger,
-} from './elements'
+} from "../elements"
 
-import useCheckActiveNav from './hooks/use-check-active-nav'
-import { IResources } from '../app/setting/resources'
-import { cn } from './lib/utils'
+import { IResources } from "../app/setting/resources"
+import useCheckActiveNav from "../hooks/use-check-active-nav"
+import { cn } from "../lib/utils"
 
 interface NavProps extends React.HTMLAttributes<HTMLDivElement> {
   isCollapsed: boolean
@@ -60,12 +56,12 @@ export default function Nav({
     <div
       data-collapsed={isCollapsed}
       className={cn(
-        'group border-b bg-background py-2 transition-[max-height,padding] duration-500 data-[collapsed=true]:py-2 md:border-none',
+        "group border-b bg-background py-2 transition-[max-height,padding] duration-500 data-[collapsed=true]:py-2 md:border-none",
         className
       )}
     >
       <TooltipProvider delayDuration={0}>
-        <nav className='grid gap-1 group-[[data-collapsed=true]]:justify-center group-[[data-collapsed=true]]:px-2'>
+        <nav className="grid gap-1 group-[[data-collapsed=true]]:justify-center group-[[data-collapsed=true]]:px-2">
           {links.map(renderLink)}
         </nav>
       </TooltipProvider>
@@ -93,18 +89,18 @@ function NavLink({
       onClick={closeNav}
       className={cn(
         buttonVariants({
-          variant: checkActiveNav(href) ? 'secondary' : 'ghost',
-          size: 'sm',
+          variant: checkActiveNav(href) ? "secondary" : "ghost",
+          size: "sm",
         }),
-        'h-12 justify-start text-wrap rounded-none px-6 motion-preset-slide-down  font-black',
-        subLink && 'h-10 w-full border-l border-l-slate-500 px-2'
+        "motion-preset-slide-down h-12 justify-start text-wrap rounded-none px-6 font-black",
+        subLink && "h-10 w-full border-l border-l-slate-500 px-2"
       )}
-      aria-current={checkActiveNav(href) ? 'page' : undefined}
+      aria-current={checkActiveNav(href) ? "page" : undefined}
     >
-      <div className='mr-2'>{icon}</div>
+      <div className="mr-2">{icon}</div>
       {title}
       {label && (
-        <div className='ml-2 rounded-lg bg-primary px-1 text-[0.625rem] text-primary-foreground  motion-preset-slide-down  font-black'>
+        <div className="motion-preset-slide-down ml-2 rounded-lg bg-primary px-1 text-[0.625rem] font-black text-primary-foreground">
           {label}
         </div>
       )}
@@ -119,14 +115,14 @@ function NavLinkDropdown({ title, icon, label, sub, closeNav }: NavLinkProps) {
     <Collapsible defaultOpen={isChildActive}>
       <CollapsibleTrigger
         className={cn(
-          buttonVariants({ variant: 'ghost', size: 'sm' }),
-          'group h-12 w-full justify-start rounded-none px-6 motion-preset-slide-down font-black'
+          buttonVariants({ variant: "ghost", size: "sm" }),
+          "group motion-preset-slide-down h-12 w-full justify-start rounded-none px-6 font-black"
         )}
       >
-        <div className='mr-2'>{icon}</div>
+        <div className="mr-2">{icon}</div>
         {title}
         {label && (
-          <div className='ml-2 rounded-lg bg-primary px-1 text-[0.625rem] text-primary-foreground'>
+          <div className="ml-2 rounded-lg bg-primary px-1 text-[0.625rem] text-primary-foreground">
             {label}
           </div>
         )}
@@ -138,10 +134,10 @@ function NavLinkDropdown({ title, icon, label, sub, closeNav }: NavLinkProps) {
           <IconChevronDown stroke={1} />
         </span>
       </CollapsibleTrigger>
-      <CollapsibleContent className='collapsibleDropdown' asChild>
+      <CollapsibleContent className="collapsibleDropdown" asChild>
         <ul>
           {sub!.map((sublink) => (
-            <li key={sublink.title} className='my-1 ml-8 '>
+            <li key={sublink.title} className="my-1 ml-8">
               <NavLink {...sublink} subLink closeNav={closeNav} />
             </li>
           ))}
@@ -161,27 +157,33 @@ function NavLinkIcon({ title, icon, label, href, closeNav }: NavLinkProps) {
           onClick={closeNav}
           className={cn(
             buttonVariants({
-              variant: checkActiveNav(href) ? 'secondary' : 'ghost',
-              size: 'icon',
+              variant: checkActiveNav(href) ? "secondary" : "ghost",
+              size: "icon",
             }),
-            'h-12 w-12'
+            "h-12 w-12"
           )}
         >
           {icon}
-          <span className='sr-only'>{title}</span>
+          <span className="sr-only">{title}</span>
         </Link>
       </TooltipTrigger>
-      <TooltipContent side='right' className='flex items-center gap-4'>
+      <TooltipContent side="right" className="flex items-center gap-4">
         {title}
         {label && (
-          <span className='ml-auto text-muted-foreground'>{label}</span>
+          <span className="ml-auto text-muted-foreground">{label}</span>
         )}
       </TooltipContent>
     </Tooltip>
   )
 }
 
-function NavLinkIconDropdown({ title, icon, label, sub, closeNav }: NavLinkProps) {
+function NavLinkIconDropdown({
+  title,
+  icon,
+  label,
+  sub,
+  closeNav,
+}: NavLinkProps) {
   const { checkActiveNav } = useCheckActiveNav()
   const isChildActive = !!sub?.find((s) => checkActiveNav(s.href))
   return (
@@ -190,38 +192,38 @@ function NavLinkIconDropdown({ title, icon, label, sub, closeNav }: NavLinkProps
         <TooltipTrigger asChild>
           <DropdownMenuTrigger asChild>
             <Button
-              variant={isChildActive ? 'secondary' : 'ghost'}
-              size='icon'
-              className='h-12 w-12'
+              variant={isChildActive ? "secondary" : "ghost"}
+              size="icon"
+              className="h-12 w-12"
             >
               {icon}
             </Button>
           </DropdownMenuTrigger>
         </TooltipTrigger>
-        <TooltipContent side='right' className='flex items-center gap-4'>
-          {title}{' '}
+        <TooltipContent side="right" className="flex items-center gap-4">
+          {title}{" "}
           {label && (
-            <span className='ml-auto text-muted-foreground'>{label}</span>
+            <span className="ml-auto text-muted-foreground">{label}</span>
           )}
           <IconChevronDown
             size={18}
-            className='-rotate-90 text-muted-foreground'
+            className="-rotate-90 text-muted-foreground"
           />
         </TooltipContent>
       </Tooltip>
-      <DropdownMenuContent side='right' align='start' sideOffset={4}>
+      <DropdownMenuContent side="right" align="start" sideOffset={4}>
         <DropdownMenuLabel>
-          {title} {label ? `(${label})` : ''}
+          {title} {label ? `(${label})` : ""}
         </DropdownMenuLabel>
         <DropdownMenuSeparator />
         {sub!.map(({ title, icon, label, href }) => (
           <DropdownMenuItem key={`${title}-${href}`} asChild>
             <Link
               href={href}
-              className={`${checkActiveNav(href) ? 'bg-secondary' : ''}`}
+              className={`${checkActiveNav(href) ? "bg-secondary" : ""}`}
             >
-              {icon} <span className='ml-2 max-w-52 text-wrap'>{title}</span>
-              {label && <span className='ml-auto text-xs'>{label}</span>}
+              {icon} <span className="ml-2 max-w-52 text-wrap">{title}</span>
+              {label && <span className="ml-auto text-xs">{label}</span>}
             </Link>
           </DropdownMenuItem>
         ))}

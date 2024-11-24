@@ -28,11 +28,23 @@
       "@/*": [
         "./src/*"
       ],
-      "@/shadcn": [
-        "./src/shadcn/elements/index.ts"
+      "@ui/*": [
+        "src/app/ui/*"
       ],
-      "@/shadcn/*": [
-        "./src/shadcn/elements/index.ts"
+      "@ui/containers/*": [
+        "src/app/ui/containers/*"
+      ],
+      "@ui/custom/*": [
+        "src/app/ui/custom/*"
+      ],
+      "@ui/elements/*": [
+        "src/app/ui/elements/*"
+      ],
+      "@ui/hooks/*": [
+        "src/app/ui/hooks/*"
+      ],
+      "@ui/lib/*": [
+        "src/app/ui/lib/*"
       ],
       "@public/*": [
         "./public/*"

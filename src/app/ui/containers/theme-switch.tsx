@@ -1,24 +1,24 @@
-"use client";
+"use client"
 
-import { useEffect } from "react";
-import { IconCheck, IconMoon, IconSun } from "@tabler/icons-react";
+import { IconCheck, IconMoon, IconSun } from "@tabler/icons-react"
+import { useEffect } from "react"
+import { Button } from "../custom/button"
 import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
   DropdownMenuTrigger,
-} from "./elements";
-import { useTheme } from "./theme-provider";
-import { Button } from "./custom/button";
-import { cn } from "./lib/utils";
+} from "../elements"
+import { cn } from "../lib/utils"
+import { useTheme } from "./theme-provider"
 
 export default function ThemeSwitch() {
-  const { theme, setTheme } = useTheme();
+  const { theme, setTheme } = useTheme()
   useEffect(() => {
-    const themeColor = theme === "dark" ? "#020817" : "#fff";
-    const metaThemeColor = document.querySelector("meta[name='theme-color']");
-    metaThemeColor && metaThemeColor.setAttribute("content", themeColor);
-  }, [theme]);
+    const themeColor = theme === "dark" ? "#020817" : "#fff"
+    const metaThemeColor = document.querySelector("meta[name='theme-color']")
+    metaThemeColor && metaThemeColor.setAttribute("content", themeColor)
+  }, [theme])
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
@@ -52,5 +52,5 @@ export default function ThemeSwitch() {
         </DropdownMenuItem>
       </DropdownMenuContent>
     </DropdownMenu>
-  );
+  )
 }

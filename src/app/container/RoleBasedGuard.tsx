@@ -1,9 +1,10 @@
 "use client";
 
 import { useAbility } from "@/app/lib/ability/context";
-import { ReactNode } from "react";
+import { type Actions, type Subjects } from "../setting/interface";
+
 import { redirect } from "next/navigation";
-import { Actions, Subjects } from "../setting/interface";
+import { type ReactNode } from "react";
 
 interface RoleBasedGuardProps {
   children: ReactNode;
@@ -12,12 +13,7 @@ interface RoleBasedGuardProps {
   fallback?: ReactNode;
 }
 
-export function RoleBasedGuard({
-  children,
-  subject,
-  action,
-  fallback,
-}: RoleBasedGuardProps) {
+export function RoleBasedGuard({ children, subject, action, fallback, }: RoleBasedGuardProps) {
   const ability = useAbility();
   if (!ability.can(action, subject)) {
     if (fallback) {

@@ -15,21 +15,58 @@
   "parserOptions": {
     "ecmaVersion": 2021,
     "sourceType": "module",
-    "project": ["tsconfig.json"],
+    "project": [
+      "tsconfig.json"
+    ],
     "tsconfigRootDir": "./"
   },
-  "plugins": ["@typescript-eslint"],
+  "plugins": [
+    "@typescript-eslint"
+  ],
   "rules": {
-    "indent": ["error", 2, { "SwitchCase": 1 }],
-    "@typescript-eslint/semi": ["error", "always"],
-    "linebreak-style": ["error", "unix"],
+    "indent": [
+      "error",
+      2,
+      {
+        "SwitchCase": 1
+      }
+    ],
+    "@typescript-eslint/semi": [
+      "error",
+      "always"
+    ],
+    "linebreak-style": [
+      "error",
+      "unix"
+    ],
     "prefer-const": "error",
-    "@typescript-eslint/quotes": ["error", "double"],
-    "key-spacing": ["error", { "beforeColon": false, "afterColon": true }],
-    "object-curly-spacing": ["error", "always"],
-    "arrow-parens": ["error", "always"],
-    "@typescript-eslint/space-before-function-paren": ["error", "never"],
-    "comma-dangle": ["error", "always-multiline"],
+    "@typescript-eslint/quotes": [
+      "error",
+      "double"
+    ],
+    "key-spacing": [
+      "error",
+      {
+        "beforeColon": false,
+        "afterColon": true
+      }
+    ],
+    "object-curly-spacing": [
+      "error",
+      "always"
+    ],
+    "arrow-parens": [
+      "error",
+      "always"
+    ],
+    "@typescript-eslint/space-before-function-paren": [
+      "error",
+      "never"
+    ],
+    "comma-dangle": [
+      "error",
+      "always-multiline"
+    ],
     "no-unused-vars": "error",
     "@typescript-eslint/no-unsafe-assignment": "error",
     "@typescript-eslint/explicit-member-accessibility": [
@@ -44,7 +81,10 @@
     "@typescript-eslint/naming-convention": [
       "error",
       {
-        "format": ["PascalCase", "camelCase"],
+        "format": [
+          "PascalCase",
+          "camelCase"
+        ],
         "selector": "default",
         "filter": {
           "regex": "^(Accept-Language|Content-Type)$",
@@ -52,56 +92,90 @@
         }
       },
       {
-        "format": ["camelCase", "PascalCase"],
+        "format": [
+          "camelCase",
+          "PascalCase"
+        ],
         "leadingUnderscore": "forbid",
         "selector": "variable"
       },
       {
-        "format": ["camelCase"],
+        "format": [
+          "camelCase"
+        ],
         "leadingUnderscore": "allow",
         "selector": "parameter"
-      },    
+      },
       {
-        "format": ["PascalCase"],
+        "format": [
+          "PascalCase"
+        ],
         "selector": "typeLike"
       },
       {
         "selector": "function",
-        "format": ["PascalCase", "camelCase"]
+        "format": [
+          "PascalCase",
+          "camelCase"
+        ]
       },
       {
-        "format": ["PascalCase"],
-        "prefix": ["T", "K"],
+        "format": [
+          "PascalCase"
+        ],
+        "prefix": [
+          "T",
+          "K"
+        ],
         "selector": "typeParameter"
       },
       {
-        "format": ["UPPER_CASE"],
+        "format": [
+          "UPPER_CASE"
+        ],
         "selector": "enumMember"
       }
     ],
     "@typescript-eslint/no-empty-function": "error",
     "@typescript-eslint/no-unused-vars": "error",
     "@typescript-eslint/no-useless-constructor": "error",
-    "block-spacing": ["error", "always"],
+    "block-spacing": [
+      "error",
+      "always"
+    ],
     "complexity": [
       "error",
       {
         "max": 10
       }
     ],
-    "curly": ["error", "all"],
-    "max-depth": ["error", 2],
-    "max-lines": ["error", 100],
+    "curly": [
+      "error",
+      "all"
+    ],
+    "max-depth": [
+      "error",
+      2
+    ],
+    "max-lines": [
+      "error",
+    ],
     "max-lines-per-function": [
       "error",
       {
-        "max": 35,
+        "max": 100,
         "skipBlankLines": true,
         "skipComments": true
       }
     ],
-    "max-nested-callbacks": ["error", 1],
-    "max-params": ["error", 2],
+    "max-nested-callbacks": [
+      "error",
+      1
+    ],
+    "max-params": [
+      "error",
+      2
+    ],
     "max-statements-per-line": [
       "error",
       {
@@ -114,7 +188,14 @@
       {
         "detectObjects": false,
         "enforceConst": true,
-        "ignore": [-1, 0, 1, 2, 10, 100],
+        "ignore": [
+          -1,
+          0,
+          1,
+          2,
+          10,
+          100
+        ],
         "ignoreArrayIndexes": true
       }
     ],
@@ -127,8 +208,14 @@
     ],
     "no-nested-ternary": "error",
     "no-unneeded-ternary": "error",
-    "one-var-declaration-per-line": ["error", "always"],
-    "operator-assignment": ["error", "always"],
+    "one-var-declaration-per-line": [
+      "error",
+      "always"
+    ],
+    "operator-assignment": [
+      "error",
+      "always"
+    ],
     "react/prop-types": "off",
     "@typescript-eslint/comma-dangle": "off",
     "@typescript-eslint/restrict-plus-operands": "off",

@@ -1,16 +1,16 @@
-"use client";
+"use client"
 
-import { useAbility } from "@/app/lib/ability/context";
-import Link from "next/link";
-import { ReactNode } from "react";
-import { Actions, Subjects } from "../setting/interface";
+import { useAbility } from "@/app/lib/ability/context"
+import Link from "next/link"
+import { type ReactNode } from "react"
+import { type Actions, type Subjects } from "../setting/interface"
 
 interface SidebarItemProps {
-  href: string;
-  icon: ReactNode;
-  label: string;
-  subject: Subjects;
-  action: Actions;
+  href: string
+  icon: ReactNode
+  label: string
+  subject: Subjects
+  action: Actions
 }
 
 export function SidebarItem({
@@ -20,9 +20,9 @@ export function SidebarItem({
   subject,
   action,
 }: SidebarItemProps) {
-  const ability = useAbility();
+  const ability = useAbility()
   if (!ability.can(action, subject)) {
-    return null;
+    return null
   }
   return (
     <Link
@@ -32,5 +32,5 @@ export function SidebarItem({
       {icon}
       {label}
     </Link>
-  );
+  )
 }
