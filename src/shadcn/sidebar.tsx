@@ -58,7 +58,7 @@ export default function Sidebar({
       {navOpened && (
         <div
           onClick={() => setNavOpened(false)}
-          className="absolute inset-0 h-svh w-full bg-black opacity-50 transition-[opacity] duration-700 md:hidden"
+          className="absolute inset-0 h-svh w-full bg-black opacity-50 transition-[opacity] duration-700 md:hidden "
         />
       )}
       <Layout fixed className={navOpened ? "h-svh" : ""}>

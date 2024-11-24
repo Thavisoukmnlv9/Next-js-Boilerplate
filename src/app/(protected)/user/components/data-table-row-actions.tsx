@@ -1,32 +1,31 @@
-import { DotsHorizontalIcon } from '@radix-ui/react-icons'
-import { Row } from '@tanstack/react-table'
+"use client";  // Add this directive to indicate this is a client-side component
 
-import { Button } from '@/components/custom/button'
+import { DotsHorizontalIcon } from '@radix-ui/react-icons'
+import { Button } from '../../../../shadcn/custom/button'
 import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
-  DropdownMenuRadioGroup,
-  DropdownMenuRadioItem,
-  DropdownMenuSeparator,
-  DropdownMenuShortcut,
-  DropdownMenuSub,
-  DropdownMenuSubContent,
-  DropdownMenuSubTrigger,
   DropdownMenuTrigger,
-} from '@/components/ui/dropdown-menu'
+} from "@/shadcn"
+import { useRouter } from 'next/navigation'
 
-import { labels } from '../data/data'
-import { taskSchema } from '../data/schema'
-
-interface DataTableRowActionsProps<TData> {
-  row: Row<TData>
+interface DataTableRowActionsProps {
+  rowId: number;
 }
 
-export function DataTableRowActions<TData>({
-  row,
-}: DataTableRowActionsProps<TData>) {
-  const task = taskSchema.parse(row.original)
+export function DataTableRowActions({
+  rowId
+}: DataTableRowActionsProps) {
+  const router = useRouter();
+
+  const handleEdit = () => {
+    router.push('/edit/' + rowId);
+  };
+
+  const handleDelete = () => {
+    console.log(`Deleting row with ID: ${rowId}`);
+  };
 
   return (
     <DropdownMenu>
@@ -40,28 +39,9 @@ export function DataTableRowActions<TData>({
         </Button>
       </DropdownMenuTrigger>
       <DropdownMenuContent align='end' className='w-[160px]'>
-        <DropdownMenuItem>Edit</DropdownMenuItem>
-        <DropdownMenuItem>Make a copy</DropdownMenuItem>
-        <DropdownMenuItem>Favorite</DropdownMenuItem>
-        <DropdownMenuSeparator />
-        <DropdownMenuSub>
-          <DropdownMenuSubTrigger>Labels</DropdownMenuSubTrigger>
-          <DropdownMenuSubContent>
-            <DropdownMenuRadioGroup value={task.label}>
-              {labels.map((label) => (
-                <DropdownMenuRadioItem key={label.value} value={label.value}>
-                  {label.label}
-                </DropdownMenuRadioItem>
-              ))}
-            </DropdownMenuRadioGroup>
-          </DropdownMenuSubContent>
-        </DropdownMenuSub>
-        <DropdownMenuSeparator />
-        <DropdownMenuItem>
-          Delete
-          <DropdownMenuShortcut>⌘⌫</DropdownMenuShortcut>
-        </DropdownMenuItem>
+        <DropdownMenuItem onClick={handleEdit}>Edit</DropdownMenuItem>
+        <DropdownMenuItem onClick={handleDelete}>Delete</DropdownMenuItem>
       </DropdownMenuContent>
     </DropdownMenu>
-  )
+  );
 }

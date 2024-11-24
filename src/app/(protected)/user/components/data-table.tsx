@@ -1,9 +1,9 @@
 import * as React from "react";
 import {
-  ColumnDef,
-  ColumnFiltersState,
-  SortingState,
-  VisibilityState,
+  type ColumnDef,
+  type ColumnFiltersState,
+  type SortingState,
+  type VisibilityState,
   flexRender,
   getCoreRowModel,
   getFacetedRowModel,
@@ -23,16 +23,22 @@ import {
   TableRow,
 } from "@/shadcn";
 import { DataTablePagination } from "./data-table-pagination";
+import { DataTableToolbar } from "./data-table-toolbar";
 
 interface DataTableProps<TData, TValue> {
-  columns: ColumnDef<TData, TValue>[];
+  setSearch?: (search: string) => void;
+  search?: string;
+  columns: Array<ColumnDef<TData, TValue>>;
   data: TData[];
   pagination?: {
     pageIndex: number;
     pageSize: number;
     totalItems: number;
   };
-  onPaginationChange?: (pagination: { pageIndex: number; pageSize: number }) => void;
+  onPaginationChange?: (pagination: {
+    pageIndex: number;
+    pageSize: number;
+  }) => void;
 }
 
 export function DataTable<TData, TValue>({
@@ -40,8 +46,9 @@ export function DataTable<TData, TValue>({
   data,
   pagination,
   onPaginationChange,
+  setSearch,
+  search,
 }: DataTableProps<TData, TValue>) {
-  
   const [rowSelection, setRowSelection] = React.useState({});
   const [columnVisibility, setColumnVisibility] =
     React.useState<VisibilityState>({});
@@ -85,6 +92,7 @@ export function DataTable<TData, TValue>({
   });
   return (
     <div className="space-y-4">
+      <DataTableToolbar table={table} setSearch={setSearch} search={search} />
       <div className="rounded-md border">
         <Table>
           <TableHeader>
@@ -96,9 +104,9 @@ export function DataTable<TData, TValue>({
                       {header.isPlaceholder
                         ? null
                         : flexRender(
-                            header.column.columnDef.header,
-                            header.getContext(),
-                          )}
+                          header.column.columnDef.header,
+                          header.getContext(),
+                        )}
                     </TableHead>
                   );
                 })}
@@ -111,7 +119,7 @@ export function DataTable<TData, TValue>({
                 <TableRow
                   key={row.id}
                   data-state={row.getIsSelected() && "selected"}
-                  className="motion-safe:transition-all motion-safe:duration-300 motion-safe:opacity-100 motion-safe:translate-y-0"
+                  className="motion-preset-slide-down font-black"
                 >
                   {row.getVisibleCells().map((cell) => (
                     <TableCell key={cell.id}>
@@ -142,11 +150,18 @@ export function DataTable<TData, TValue>({
           totalItems={pagination.totalItems}
           paginationMeta={{
             isFirstPage: pagination.pageIndex === 0,
-            isLastPage: pagination.pageIndex === Math.ceil(pagination.totalItems / pagination.pageSize) - 1,
+            isLastPage:
+              pagination.pageIndex ===
+              Math.ceil(pagination.totalItems / pagination.pageSize) - 1,
             currentPage: pagination.pageIndex + 1,
             pageCount: Math.ceil(pagination.totalItems / pagination.pageSize),
           }}
-          onPageChange={(newPage) => onPaginationChange?.({ pageIndex: newPage - 1, pageSize: pagination.pageSize })}
+          onPageChange={(newPage) =>
+            onPaginationChange?.({
+              pageIndex: newPage - 1,
+              pageSize: pagination.pageSize,
+            })
+          }
         />
       )}
     </div>

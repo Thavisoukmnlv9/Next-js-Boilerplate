@@ -96,7 +96,7 @@ function NavLink({
           variant: checkActiveNav(href) ? 'secondary' : 'ghost',
           size: 'sm',
         }),
-        'h-12 justify-start text-wrap rounded-none px-6',
+        'h-12 justify-start text-wrap rounded-none px-6 motion-preset-slide-down  font-black',
         subLink && 'h-10 w-full border-l border-l-slate-500 px-2'
       )}
       aria-current={checkActiveNav(href) ? 'page' : undefined}
@@ -104,7 +104,7 @@ function NavLink({
       <div className='mr-2'>{icon}</div>
       {title}
       {label && (
-        <div className='ml-2 rounded-lg bg-primary px-1 text-[0.625rem] text-primary-foreground'>
+        <div className='ml-2 rounded-lg bg-primary px-1 text-[0.625rem] text-primary-foreground  motion-preset-slide-down  font-black'>
           {label}
         </div>
       )}
@@ -120,7 +120,7 @@ function NavLinkDropdown({ title, icon, label, sub, closeNav }: NavLinkProps) {
       <CollapsibleTrigger
         className={cn(
           buttonVariants({ variant: 'ghost', size: 'sm' }),
-          'group h-12 w-full justify-start rounded-none px-6'
+          'group h-12 w-full justify-start rounded-none px-6 motion-preset-slide-down font-black'
         )}
       >
         <div className='mr-2'>{icon}</div>
@@ -141,7 +141,7 @@ function NavLinkDropdown({ title, icon, label, sub, closeNav }: NavLinkProps) {
       <CollapsibleContent className='collapsibleDropdown' asChild>
         <ul>
           {sub!.map((sublink) => (
-            <li key={sublink.title} className='my-1 ml-8'>
+            <li key={sublink.title} className='my-1 ml-8 '>
               <NavLink {...sublink} subLink closeNav={closeNav} />
             </li>
           ))}

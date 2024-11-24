@@ -1,7 +1,24 @@
-import { ColumnDef } from "@tanstack/react-table";
-import { Checkbox } from "@/shadcn/elements";
+import { Badge, Checkbox } from '@/shadcn/elements';
+import { type ColumnDef } from "@tanstack/react-table";
+import { DataTableColumnHeader } from './data-table-column-header';
+import { DataTableRowActions } from './data-table-row-actions';
 
-export const columns: ColumnDef<any>[] = [
+export const labels = [
+  {
+    value: 'bug',
+    label: 'Bug',
+  },
+  {
+    value: 'feature',
+    label: 'Feature',
+  },
+  {
+    value: 'documentation',
+    label: 'Documentation',
+  },
+]
+
+export const columns: Array<ColumnDef<any>> = [
   {
     id: "select",
     header: ({ table }) => (
@@ -10,7 +27,7 @@ export const columns: ColumnDef<any>[] = [
           table.getIsAllPageRowsSelected() ||
           (table.getIsSomePageRowsSelected() && "indeterminate")
         }
-        onCheckedChange={(value) => table.toggleAllPageRowsSelected(!!value)}
+        onCheckedChange={(value) => { table.toggleAllPageRowsSelected(!!value); }}
         aria-label="Select all"
         className="translate-y-[2px]"
       />
@@ -18,7 +35,7 @@ export const columns: ColumnDef<any>[] = [
     cell: ({ row }) => (
       <Checkbox
         checked={row.getIsSelected()}
-        onCheckedChange={(value) => row.toggleSelected(!!value)}
+        onCheckedChange={(value) => { row.toggleSelected(!!value); }}
         aria-label="Select row"
         className="translate-y-[2px]"
       />
@@ -27,13 +44,30 @@ export const columns: ColumnDef<any>[] = [
     enableHiding: false,
   },
   {
+    accessorKey: 'role',
+    header: ({ column }) => (
+      <DataTableColumnHeader column={column} title='role' />
+    ),
+    cell: ({ row }) => {
+      const label = labels.find((label) => label.value === row.original.label)
+      return (
+        <div className='flex space-x-2'>
+          {label && <Badge variant='outline'>{label.label}</Badge>}
+          <span className='max-w-32 truncate font-medium sm:max-w-72 md:max-w-[31rem]'>
+            {row.getValue('role')}
+          </span>
+        </div>
+      )
+    },
+  },
+  {
     accessorKey: "fullName",
     header: "Full Name",
     cell: ({ row }) => <span>{row.original.fullName}</span>,
   },
   {
-    accessorKey: "role",
-    header: "Role",
+    accessorKey: "fullName",
+    header: "fullName",
     cell: ({ row }) => <span>{row.original.role}</span>,
   },
   {
@@ -51,9 +85,7 @@ export const columns: ColumnDef<any>[] = [
     header: "Status",
     cell: ({ row }) => (
       <span
-        className={`font-semibold ${
-          row.original.status ? "text-green-600" : "text-red-600"
-        }`}
+        className={`font-semibold ${row.original.status ? "text-green-600" : "text-red-600"}`}
       >
         {row.original.status ? "Active" : "Inactive"}
       </span>
@@ -67,10 +99,18 @@ export const columns: ColumnDef<any>[] = [
     ),
   },
   {
-    accessorKey: "updatedAt",
+    accessorKey: "actions",
     header: "Updated At",
     cell: ({ row }) => (
       <span>{new Date(row.original.updatedAt).toLocaleDateString()}</span>
     ),
   },
+  {
+    accessorKey: "id",
+    header: "actions",
+    cell: ({ row: { original: row } }) => {
+      const rwoId = row.id
+      return <DataTableRowActions rowId={rwoId} />;
+    },
+  }
 ];

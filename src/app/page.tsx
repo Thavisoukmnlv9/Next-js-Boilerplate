@@ -27,3 +27,17 @@ export default function Home() {
   }
   return null;
 }
+function handleRedirectw(status: string, router: any) {
+  if (status === "loading") {
+    if (status === "loading") {
+      if (status === "loading") {
+        handleRedirect(status, router);
+      }
+    }
+  }
+  if (status === "unauthenticated") {
+    router.push("/login");
+  } else if (status === "authenticated") {
+    router.push("/user");
+  }
+}

@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { apiClient } from "@/app/lib/Axios";
+import { useDebounce } from "use-debounce";
 
 interface PaginationState {
   page: number;
@@ -17,6 +18,7 @@ interface UserResponse {
   };
 }
 
+
 const useUsers = () => {
   const [users, setUsers] = useState<any[]>([]);
   const [loading, setLoading] = useState(true);
@@ -33,7 +35,7 @@ const useUsers = () => {
     totalCount: 0,
   });
   const [search, setSearch] = useState<string>("");
-
+  const [debouncedSearch] = useDebounce(search, 500);
   const fetchUsers = async () => {
     try {
       setLoading(true);
@@ -41,7 +43,7 @@ const useUsers = () => {
         params: {
           page: pagination.page,
           limit: pagination.limit,
-          search,
+          search: debouncedSearch,
         },
       });
 
@@ -57,17 +59,14 @@ const useUsers = () => {
 
   useEffect(() => {
     fetchUsers();
-  }, [pagination, search]);
-
+  }, [pagination, debouncedSearch]);
   const updatePagination = (newPagination: Partial<PaginationState>) => {
     setPagination((prev) => ({ ...prev, ...newPagination }));
   };
-
   const updateSearch = (newSearch: string) => {
     setSearch(newSearch);
     setPagination({ page: 1, limit: pagination.limit });
   };
-
   return {
     users,
     loading,
@@ -82,4 +81,3 @@ const useUsers = () => {
 };
 
 export default useUsers;
-
