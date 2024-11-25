@@ -23,8 +23,7 @@ const PasswordInput = forwardRef<HTMLInputElement, PasswordInputProps>(
         { regex: /[0-9]/, text: "ຢ່າງນ້ອຍ 1 ຕົວເລກ" },
         { regex: /[a-z]/, text: "ຢ່າງນ້ອຍ 1 ຕົວອັກສອນຂຽນນ້ອຍ" },
         { regex: /[A-Z]/, text: "ຢ່າງນ້ອຍ 1 ຕົວອັກສອນຂຽນໃຫຍ່" },
-      ]
-
+      ] 
       return requirements.map((req) => ({
         met: req.regex.test(pass),
         text: req.text,

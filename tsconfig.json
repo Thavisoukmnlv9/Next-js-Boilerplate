@@ -19,39 +19,22 @@
     "isolatedModules": true,
     "jsx": "preserve",
     "baseUrl": ".",
-    "plugins": [
-      {
-        "name": "next"
-      }
-    ],
+    "plugins": [{ "name": "next" }],
     "paths": {
-      "@/*": [
-        "./src/*"
-      ],
-      "@ui/*": [
-        "src/app/ui/*"
-      ],
-      "@ui/containers/*": [
-        "src/app/ui/containers/*"
-      ],
-      "@ui/custom/*": [
-        "src/app/ui/custom/*"
-      ],
-      "@ui/elements/*": [
-        "src/app/ui/elements/*"
-      ],
-      "@ui/hooks/*": [
-        "src/app/ui/hooks/*"
-      ],
-      "@ui/lib/*": [
-        "src/app/ui/lib/*"
-      ],
-      "@public/*": [
-        "./public/*"
-      ]
+      "@app/*": ["src/app/*"],
+      "@ui/*": ["src/app/ui/*"],
+      "@ui/containers": ["src/app/ui/containers"],
+      "@ui/custom/": ["src/app/ui/custom/"],
+      "@ui/elements/": ["src/app/ui/elements/"],
+      "@ui/hooks/": ["src/app/ui/hooks/"],
+      "@ui/lib/": ["src/app/ui/lib/"],
+      "@ui/elements/*": ["src/app/ui/elements/"],
+
+      "@lib/ability": ["src/app/lib/ability/"],
     },
     "incremental": true
   },
+  
   "include": [
     "next-env.d.ts",
     "**/*.ts",

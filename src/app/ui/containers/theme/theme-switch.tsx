@@ -2,14 +2,14 @@
 
 import { IconCheck, IconMoon, IconSun } from "@tabler/icons-react"
 import { useEffect } from "react"
-import { Button } from "../custom/button"
+import { Button } from "../button"
 import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
   DropdownMenuTrigger,
-} from "../elements"
-import { cn } from "../lib/utils"
+} from "../../elements"
+import { cn } from "../../lib/utils"
 import { useTheme } from "./theme-provider"
 
 export default function ThemeSwitch() {

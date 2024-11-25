@@ -1,10 +1,11 @@
 "use client";
 
 import React from "react";
-import AuthGuard from "@/app/lib/auth/guard";
+
+import { AppShell, ThemeProvider } from "@ui/containers";
 import { AbilityProvider } from "../lib/ability/provider";
-import { ThemeProvider } from "../../shadcn/theme-provider";
-import AppShell from "../../shadcn/app-shell";
+import AuthGuard from "@app/lib/auth/guard";
+
 
 export default function ProtectedLayout({
   children,

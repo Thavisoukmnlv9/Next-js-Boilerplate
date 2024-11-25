@@ -16,7 +16,7 @@ import {
   PopoverContent,
   PopoverTrigger,
   Separator,
-} from '@/shadcn/ui';
+} from  "../../elements";
 
 interface DataTableFacetedFilterProps<TData, TValue> {
   column?: Column<TData, TValue>

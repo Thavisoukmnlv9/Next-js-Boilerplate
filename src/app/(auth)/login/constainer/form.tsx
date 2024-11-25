@@ -1,5 +1,7 @@
 "use client";
 import { HTMLAttributes } from "react";
+import Link from "next/link";
+
 import {
   Form,
   FormControl,
@@ -8,12 +10,11 @@ import {
   FormLabel,
   FormMessage,
   Input,
-} from "@/shadcn";
+} from "@ui/elements"
 
-import { Button } from "../../../../shadcn/custom/button";
-import { cn } from "../../../../shadcn/lib/utils";
-import Link from "next/link";
-import { PasswordInput } from "../../../../shadcn/custom/password-input";
+import { cn } from "@ui/lib/utils";
+import { Button, PasswordInput } from "@ui/containers";
+
 import { useUserAuthForm } from "./hook";
 
 interface UserAuthFormProps extends HTMLAttributes<HTMLDivElement> { }

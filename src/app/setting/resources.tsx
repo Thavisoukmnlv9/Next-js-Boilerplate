@@ -1,48 +1,46 @@
 import {
-  IconLayoutDashboard,
-} from '@tabler/icons-react'
+  UserIcon,
+  PackageIcon,
+  ShoppingCartIcon,
+  Settings
+} from 'lucide-react';
 
 export interface NavLink {
-  title: string
-  label?: string
-  href: string
-  icon: JSX.Element
+  title: string;
+  label?: string;
+  href: string;
+  icon: JSX.Element;
 }
 
 export interface IResources extends NavLink {
-  sub?: NavLink[]
+  sub?: NavLink[];
 }
 
 export const resources: IResources[] = [
   {
-    title: 'Dashboard',
-    href: '/',
-    icon: <IconLayoutDashboard size={18} />,
-  },
-  {
-    title: 'comingSoon',
-    href: '/comingSoon',
-    icon: <IconLayoutDashboard size={18} />,
-  },
-  {
-    title: 'Books',
-    href: '/Books',
-    icon: <IconLayoutDashboard size={18} />,
-  },
-  {
-    title: 'User Management',
+    title: 'ຜູ້ໃຊ້ງານລະບົບ', 
     href: '/user',
-    icon: <IconLayoutDashboard size={18} />,
+    icon: <UserIcon size={18} />,
+  },
+  {
+    title: 'ຕັ້ງຄ່າ', 
+    href: '/setting',
+    icon: <Settings size={18} />,
+  },
+  {
+    title: 'ຕົວຢ່າງ submenu',
+    href: '/submenu',
+    icon: <PackageIcon size={18} />,
     sub: [
       {
-        title: 'View Users',
-        href: '/user/view',
-        icon: <IconLayoutDashboard size={18} />,
+        title: 'ສິນຄ້າ',
+        href: '/products',
+        icon: <PackageIcon size={18} />,
       },
       {
-        title: 'Edit Users',
-        href: '/user/edit',
-        icon: <IconLayoutDashboard size={18} />,
+        title: 'ອໍເດີ',
+        href: '/',
+        icon: <ShoppingCartIcon size={18} />,
       },
     ],
   },

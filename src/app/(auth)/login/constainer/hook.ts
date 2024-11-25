@@ -1,10 +1,11 @@
+import { signIn } from "next-auth/react";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
+
 import { zodResolver } from "@hookform/resolvers/zod";
-import { signIn } from "next-auth/react";
-import { useToast, ToastProps } from "@/shadcn";
-import { cn } from "../../../../shadcn/lib/utils";
+import { useToast } from "@ui/elements";
+import { cn } from "@ui/lib/utils";
 import { formSchema } from "./schema";
 
 const authenticateUser = async (tel: string, password: string) => {

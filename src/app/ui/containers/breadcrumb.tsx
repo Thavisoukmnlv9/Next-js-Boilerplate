@@ -14,9 +14,7 @@ const BreadcrumbContext = React.createContext<boolean>(false)
 const Breadcrumb = React.forwardRef<HTMLElement, BreadcrumbProps>(
   ({ className, children, separator, ...props }, ref) => {
     const validChildren = getValidChildren(children)
-
     const count = validChildren.length
-
     const clones = validChildren.map((child, index) =>
       React.cloneElement(child, {
         separator,

@@ -1,10 +1,10 @@
 "use client";
 
-import { useAbility } from "@/app/lib/ability/context";
-import { type Actions, type Subjects } from "../setting/interface";
+import { type Actions, type Subjects } from "../../setting/interface";
 
 import { redirect } from "next/navigation";
 import { type ReactNode } from "react";
+import { useAbility } from "./context";
 
 interface RoleBasedGuardProps {
   children: ReactNode;

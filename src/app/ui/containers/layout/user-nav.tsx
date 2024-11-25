@@ -15,7 +15,7 @@ import {
   DropdownMenuSeparator,
   DropdownMenuShortcut,
   DropdownMenuTrigger,
-} from "../elements"
+} from "../../elements"
 
 export function UserNav() {
   return (

@@ -1,4 +1,4 @@
-import { Badge, Checkbox } from '@/shadcn/elements';
+import { Badge, Checkbox } from  "../../elements";
 import { type ColumnDef } from "@tanstack/react-table";
 import { DataTableColumnHeader } from './data-table-column-header';
 import { DataTableRowActions } from './data-table-row-actions';

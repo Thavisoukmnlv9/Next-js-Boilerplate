@@ -1,13 +1,17 @@
 "use client"
-import { useAbility } from "@/app/lib/ability/context"
-import { IconChevronsLeft, IconMenu2, IconX } from "@tabler/icons-react"
 import Image from "next/image"
 import { useEffect, useState } from "react"
-import { IResources, resources } from "../app/setting/resources"
-import { Button } from "../custom/button"
-import { Layout } from "../custom/layout"
-import { cn } from "../lib/utils"
+
+// import { useAbility } from "@/app/lib/ability/context"
+// import { IResources, resources } from "@/app/setting/resources"
+import { IconChevronsLeft, IconMenu2, IconX } from "@tabler/icons-react"
+
+import { Button } from "../button"
+import { Layout } from "../layout"
+import { cn } from "../../lib/utils"
 import Nav from "./nav"
+import { IResources, resources } from "@app/setting/resources"
+import { useAbility } from "@app/lib/ability/context"
 
 interface SidebarProps extends React.HTMLAttributes<HTMLElement> {
   isCollapsed: boolean
@@ -81,7 +85,7 @@ export default function Sidebar({
                 isCollapsed ? "invisible w-0" : "visible w-auto"
               }`}
             >
-              <span className="font-medium">admin Boilerplate</span>
+              <span className="font-medium">Admin Boilerplate</span>
               <span className="text-xs">ShadcnUI</span>
             </div>
           </div>

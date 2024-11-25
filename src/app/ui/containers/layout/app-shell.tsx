@@ -1,13 +1,13 @@
 import { ReactNode } from "react"
-import useIsCollapsed from "../hooks/use-is-collapsed"
-import Sidebar from "../sidebar"
-import SkipToMain from "../skip-to-main"
+import useIsCollapsed from "../../hooks/use-is-collapsed"
+import Sidebar from "./sidebar"
+import SkipToMain from "./skip-to-main"
 
 interface AppShellProps {
   children: ReactNode
 }
 
-export default function AppShell({ children }: AppShellProps) {
+export function AppShell({ children }: AppShellProps) {
   const [isCollapsed, setIsCollapsed] = useIsCollapsed()
   return (
     <div className="relative h-full overflow-hidden bg-background">

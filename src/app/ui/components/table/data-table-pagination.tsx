@@ -12,7 +12,7 @@ import {
   SelectItem,
   SelectTrigger,
   SelectValue,
-} from "@/shadcn/elements";
+} from  "../../elements";
 
 interface DataTablePaginationProps {
   table: Table<any>;

@@ -42,8 +42,6 @@ api.interceptors.response.use(
     return response
   },
   async (error: AxiosError) => {
-    const originalRequest = error.config!
-
     if (error.response?.status === 401) {
       try {
         const session = await getSession()
@@ -58,7 +56,6 @@ api.interceptors.response.use(
       status: error.response?.status || 500,
       data: error.response?.data,
     }
-
     return Promise.reject(apiError)
   }
 )

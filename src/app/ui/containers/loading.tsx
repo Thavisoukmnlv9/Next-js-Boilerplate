@@ -1,17 +1,19 @@
 "use client";
 
-import { Progress } from "@/shadcn/elements/progress";
-import React from "react";
+import { useEffect, useState } from "react";
+import { Progress } from "@ui/elements";
 
-export default function Loading() {
-  const initValue = 13;
-  const [progress, setProgress] = React.useState(initValue);
-  const waitingTime = 200;
+
+const waitingTime = 200;
+const initValue = 13;
+
+export function Loading() {
+  const [progress, setProgress] = useState(initValue);
   const handleTimeout = () => {
     const progressing = 90;
     setProgress(progressing);
   };
-  React.useEffect(() => {
+  useEffect(() => {
     const timer = setTimeout(handleTimeout, waitingTime);
     return () => {
       clearTimeout(timer);

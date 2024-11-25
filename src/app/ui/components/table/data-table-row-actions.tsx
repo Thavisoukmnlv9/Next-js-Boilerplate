@@ -1,13 +1,13 @@
 "use client";  // Add this directive to indicate this is a client-side component
 
 import { DotsHorizontalIcon } from '@radix-ui/react-icons'
-import { Button } from '../../../../shadcn/custom/button'
+import { Button } from "../../containers/button"
 import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
   DropdownMenuTrigger,
-} from "@/shadcn"
+} from "../../elements";
 import { useRouter } from 'next/navigation'
 
 interface DataTableRowActionsProps {

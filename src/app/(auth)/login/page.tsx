@@ -1,10 +1,11 @@
-// import { UserAuthForm } from './components/user-auth-form'
 "use client";
+
+import Image from "next/image";
+import { Card } from "@ui/elements";
+
 import { BadgeCheck } from "lucide-react";
 import { UserAuthForm } from "./constainer/form";
-import { Card } from "@/shadcn/elements";
-import Image from "next/image";
-import { LoginFormContainer } from "./constainer/login";
+
 
 export default function SignIn() {
   return (
@@ -51,7 +52,6 @@ function RightSection() {
               ເພື່ອເຂົ້າສູ່ບັນຊີຂອງທ່ານ
             </p>
           </div>
-          {/* <LoginFormContainer /> */}
           <UserAuthForm />
         </Card>
       </div>

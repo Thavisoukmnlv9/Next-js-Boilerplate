@@ -1,9 +1,9 @@
 "use client";
 
-import { ReactNode } from "react";
-import { AbilityContext } from "./context";
 import { useSession } from "next-auth/react";
+import { ReactNode } from "react";
 import { defineAbilityFor } from "./builder";
+import { AbilityContext } from "./context";
 
 export function AbilityProvider({ children }: { children: ReactNode }) {
   const { data: session } = useSession();

@@ -1,4 +1,4 @@
-import AuthGuard from "@/app/lib/auth/guard";
+import AuthGuard from "@app/lib/auth/guard";
 
 export default function AuthLayout({
   children,

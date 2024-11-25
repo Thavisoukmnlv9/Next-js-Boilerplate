@@ -1,5 +1,5 @@
+import { apiClient } from "@app/lib/Axios";
 import { useState, useEffect } from "react";
-import { apiClient } from "@/app/lib/Axios";
 import { useDebounce } from "use-debounce";
 
 interface PaginationState {
@@ -18,24 +18,16 @@ interface UserResponse {
   };
 }
 
-
 const useUsers = () => {
+
   const [users, setUsers] = useState<any[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
-  const [pagination, setPagination] = useState<PaginationState>({
-    page: 1,
-    limit: 10,
-  });
-  const [meta, setMeta] = useState({
-    isFirstPage: true,
-    isLastPage: false,
-    currentPage: 1,
-    pageCount: 1,
-    totalCount: 0,
-  });
+  const [pagination, setPagination] = useState<PaginationState>({ page: 1, limit: 10, });
+  const [meta, setMeta] = useState({isFirstPage: true, isLastPage: false, currentPage: 1, pageCount: 1, totalCount: 0, });
   const [search, setSearch] = useState<string>("");
   const [debouncedSearch] = useDebounce(search, 500);
+
   const fetchUsers = async () => {
     try {
       setLoading(true);
@@ -74,7 +66,6 @@ const useUsers = () => {
     pagination,
     setPagination: updatePagination,
     meta,
-    search,
     setSearch: updateSearch,
     refetch: fetchUsers,
   };

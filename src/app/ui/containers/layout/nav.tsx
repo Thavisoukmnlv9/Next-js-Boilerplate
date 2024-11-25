@@ -1,6 +1,7 @@
-import { IconChevronDown } from "@tabler/icons-react"
 import Link from "next/link"
-import { Button, buttonVariants } from "../custom/button"
+import { IconChevronDown } from "@tabler/icons-react"
+
+import { Button, buttonVariants } from "../button"
 import {
   Collapsible,
   CollapsibleContent,
@@ -15,11 +16,11 @@ import {
   TooltipContent,
   TooltipProvider,
   TooltipTrigger,
-} from "../elements"
+} from "../../elements"
 
-import { IResources } from "../app/setting/resources"
-import useCheckActiveNav from "../hooks/use-check-active-nav"
-import { cn } from "../lib/utils"
+import useCheckActiveNav from "../../hooks/use-check-active-nav"
+import { cn } from "../../lib/utils"
+import { IResources } from "@app/setting/resources"
 
 interface NavProps extends React.HTMLAttributes<HTMLDivElement> {
   isCollapsed: boolean

@@ -9,7 +9,7 @@ import {
   DropdownMenuLabel,
   DropdownMenuSeparator,
   Button
-} from '@/shadcn'
+} from  "../../elements";
 
 interface DataTableViewOptionsProps<TData> {
   table: Table<TData>

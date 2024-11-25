@@ -2,8 +2,8 @@ import { ArrowDownIcon, CheckCircledIcon, CircleIcon, Cross2Icon, CrossCircledIc
 import { Table } from "@tanstack/react-table";
 
 // import { Button } from '@/components/custom/button'
-import { Input, Button } from "@/shadcn";
-import { DataTableViewOptions } from "../components/data-table-view-options";
+import { Input, Button } from  "../../elements";
+import { DataTableViewOptions } from "./data-table-view-options";
 
 // import { priorities, statuses } from '../data/data'
 import { DataTableFacetedFilter } from "./data-table-faceted-filter";

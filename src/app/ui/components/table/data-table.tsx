@@ -21,7 +21,8 @@ import {
   TableHead,
   TableHeader,
   TableRow,
-} from "@/shadcn";
+} from "../../elements";
+
 import { DataTablePagination } from "./data-table-pagination";
 import { DataTableToolbar } from "./data-table-toolbar";
 

@@ -9,5 +9,4 @@ const SkipToMain = () => {
     </a>
   )
 }
-
 export default SkipToMain
