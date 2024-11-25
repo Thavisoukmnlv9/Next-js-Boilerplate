@@ -3,6 +3,7 @@ import { type ColumnDef } from "@tanstack/react-table";
 import { DataTableColumnHeader } from '../../../ui/components/table/data-table-column-header';
 import { DataTableRowActions } from '../../../ui/components/table/data-table-row-actions';
 import { cn } from "@app/ui/lib/utils";
+import { RoleLabels, IUser } from "./interface";
 
 export const labels = [
   {
@@ -18,23 +19,7 @@ export const labels = [
     label: 'Documentation',
   },
 ]
-type RoleLabels = {
-  staff: string;
-  admin: string;
-};
-interface User {
-  id: number;
-  tel: string;
-  email: string | null;
-  password: string;
-  role: RoleLabels;
-  fullName: string;
-  status: boolean;
-  createdAt: string;
-  updatedAt: string;
-  deletedAt: string | null;
-  index: number;
-}
+
 
 const roleLabels: RoleLabels = {
   staff: 'ພະນັກງານ',
@@ -52,7 +37,7 @@ const getStatus = (status: string) => {
   return <Badge variant="outline" className={cn("capitalize", status === "active" ? "bg-red-500" : " bg-green-500")}>{label}</Badge>
 };
 
-export const columns: Array<ColumnDef<User>> = [
+export const columns: Array<ColumnDef<IUser>> = [
   {
     id: "select",
     header: ({ table }) => (
@@ -113,15 +98,15 @@ export const columns: Array<ColumnDef<User>> = [
   },
   {
     accessorKey: "email",
-    header: "Email",
+    header: "ອີເມວ",
     cell: ({ row }) => <span>{row.original.email || "-"}</span>,
   },
   {
     accessorKey: "id",
-    header: "actions",
+    header: "",
     cell: ({ row: { original: row } }) => {
       const rwoId = row.id
-      return <DataTableRowActions rowId={rwoId} />;
+      return <DataTableRowActions rowId={rwoId} resource="user" />;
     },
   }
 ];

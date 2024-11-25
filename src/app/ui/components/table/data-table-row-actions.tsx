@@ -9,20 +9,23 @@ import {
   DropdownMenuTrigger,
 } from "../../elements";
 import { useRouter } from 'next/navigation'
-
+import { usePathname } from 'next/navigation'
+ 
 interface DataTableRowActionsProps {
   rowId: number;
+  resource?: string
 }
 
 export function DataTableRowActions({
-  rowId
+  rowId,
+  resource,
 }: DataTableRowActionsProps) {
   const router = useRouter();
-
+  const pathname = usePathname()
   const handleEdit = () => {
-    router.push('/edit/' + rowId);
-  };
+    router.push(`/${resource ? resource : pathname}/edit/${rowId}`);
 
+  };
   const handleDelete = () => {
     console.log(`Deleting row with ID: ${rowId}`);
   };
