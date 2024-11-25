@@ -1,7 +1,7 @@
 "use client";
 import useUsers from "./hook";
 import { DataTable } from "@ui/components/table/data-table";
-import { columns } from "@ui/components/table/columns";
+import { columns } from "@app/(protected)/user/container/columns";
 import { RoleBasedGuard } from "@app/lib/ability/roleBasedGuard";
 import { Breadcrumb, BreadcrumbItem, Layout, UserNav } from "@app/ui/containers";
 import ThemeSwitch from "@app/ui/containers/theme/theme-switch";
@@ -31,23 +31,16 @@ export default function UserPage() {
   const { users, pagination, setPagination, meta, setSearch, } = useUsers();
   return (
     <>
-      {/* <Breadcrumb separator={<IconChevronRight size={18} />}>
-        {items}
-      </Breadcrumb> */}
-
       <RoleBasedGuard subject="User" action="read" fallback={<div>You don't have permission to view this page</div>} >
         <Layout>
           <Layout.Header>
             <div className="ml-auto flex items-center space-x-4">
-            <Breadcrumb>{items}</Breadcrumb>
               <ThemeSwitch />
               <UserNav />
             </div>
           </Layout.Header>
           <Layout.Body>
-
             <div className="pl-4 space-y-2 ">
-              <Breadcrumb>{items}</Breadcrumb>
               <div className="mb-2flex items-center justify-between space-y-2">
                 <div>
                   <h2 className="text-2xl font-bold tracking-tight">
@@ -59,7 +52,6 @@ export default function UserPage() {
                 </div>
               </div>
             </div>
-
             <div className="-mx-4 flex-1 overflow-auto px-4 py-1 lg:flex-row lg:space-x-12 lg:space-y-0">
               <div className="space-y-4 p-4">
                 <DataTable
